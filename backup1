@@ -1,0 +1,23 @@
+apiVersion: velero.io/v1
+kind: Backup
+metadata:
+  name: backup20210628
+  namespace: velero
+
+spec:
+#namespaces to be included in the backup are put here, to exclude namespaces, 
+#they are put under "excludedNamespaces"
+  includedNamespaces:
+  - 'ic-incorta-cd'
+#resources to be included in the backup are put here, to exclude resources, 
+#they are put under "excludedResources"
+  includedResources:
+  - '*'
+  includeClusterResources: null
+#where the backup will be stored
+  storageLocation: default
+#whether or not to snapshot volumes.  
+  snapshotVolumes: false
+#the amount of time before this backup is eligible for garbage collection.
+#default value is 30 days
+  ttl: 24h0m0s
